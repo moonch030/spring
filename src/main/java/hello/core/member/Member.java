@@ -1,13 +1,13 @@
 package hello.core.member;
 
-public enum Member {
+public class Member {
     ;
 
     private Long id;
     private String name;
     private Grade grade;
 
-    Member(Long id, String name, Grade grade) {
+    public Member(Long id, String name, Grade grade) {
         this.id = id;
         this.name = name;
         this.grade = grade;
