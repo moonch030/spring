@@ -12,11 +12,17 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor //final이 붙은걸 가지고 생성자 만들어줌
+//@RequiredArgsConstructor //final이 붙은걸 가지고 생성자 만들어줌
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository; //인터페이스 = new 클래스
     private final DiscountPolicy discountPolicy;
+
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
